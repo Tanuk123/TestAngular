@@ -26,11 +26,8 @@ exports.signin=(request,response)=>{
         password:request.body.password
     })
     .then(result=>{
-       if(result.isBlocked==false)
-        return response.status(200).json(result);
-       else
-       return response.status(404).json({message:"block user"});
-    }).catch(err=>{
+       return response.status(200).json(result);
+     }).catch(err=>{
         console.log(err);
         return response.status(500).json({message:"Oops!something went wrong"});
 
