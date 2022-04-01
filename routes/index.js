@@ -18,8 +18,8 @@ router.post("/signin" ,userController.signin);
 
 router.post("/addcatgeory",upload.single("categoryimage"),categoryController.addcategory); 
 router.get("/viewcategory",categoryController.viewcategory);
-// router.delete("/deletecategory/:id",categoryController.deletecategory);
-// router.post("/updatecategory/:id",upload.single("categoryimage"),categoryController.updatecategory);
+router.delete("/deletecategory/:id",categoryController.deletecategory);
+router.post("/updatecategory/:id",upload.single("categoryimage"),categoryController.updatecategory);
 
 
 
