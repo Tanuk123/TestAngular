@@ -1,4 +1,5 @@
 const User=require('../model/user.model');
+const jwt=require('jsonwebtoken');
 exports.signup=(request,response)=>{
     
     let username=request.body.username;
@@ -26,7 +27,13 @@ exports.signin=(request,response)=>{
         password:request.body.password
     })
     .then(result=>{
-       return response.status(200).json(result);
+        let payload= {subject:result._id}
+        let token =jwt.sign(payload,'hjdjshfdhsjhf');
+       return response.status(200).json({
+           status:"login success",
+           currentuser:result,
+           token:token
+       });
      }).catch(err=>{
         console.log(err);
         return response.status(500).json({message:"Oops!something went wrong"});
