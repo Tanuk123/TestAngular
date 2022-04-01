@@ -27,11 +27,11 @@ exports.signin=(request,response)=>{
         password:request.body.password
     })
     .then(result=>{
-        let status = true;
+        let status;
         let payload= {subject:result._id}
         let token =jwt.sign(payload,'hjdjshfdhsjhf');
        return response.status(200).json({
-           status: status,
+           status: "Login success",
            currentuser:result,
            token:token
        });
