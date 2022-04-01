@@ -1,6 +1,6 @@
 const Category = require("../model/category.model");
 const { response } = require("express");
-
+const port =process.env.PORT||3000;
 exports.addcategory = (request, response, next) => {
   Category.create({
     categoryname: request.body.categoryname,
