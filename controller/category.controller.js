@@ -4,7 +4,8 @@ const port =process.env.PORT||3000;
 exports.addcategory = (request, response, next) => {
   Category.create({
     categoryname: request.body.categoryname,
-    categoryimage: "https://angularbackendapi.herokuapp.com/images"/ + request.file.filename,
+    categoryimage: "https://angularbackendapi.herokuapp.com/images/" + request.file.filename,
+    
   })
     .then((result) => {
       return response.status(201).json(result);
