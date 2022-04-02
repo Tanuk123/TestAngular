@@ -1,5 +1,7 @@
 var express = require('express');
 const jwt=require('jsonwebtoken');
+const tokenvarification=require('../middleware/tokenVarification');
+
 var router = express.Router();
 const userController=require('../controller/user.controller');
 const categoryController=require('../controller/category.controller.js');
@@ -16,10 +18,10 @@ var upload = multer({ storage: Storage });
 router.post("/signup" ,userController.signup);
 router.post("/signin" ,userController.signin);
 
-router.post("/addcatgeory",upload.single("categoryimage"),categoryController.addcategory); 
-router.get("/viewcategory",categoryController.viewcategory);
-router.delete("/deletecategory/:id",categoryController.deletecategory);
-router.post("/updatecategory/:id",upload.single("categoryimage"),categoryController.updatecategory);
+router.post("/addcatgeory",tokenvarification.tokenvarify,upload.single("categoryimage"),categoryController.addcategory); 
+router.get("/viewcategory",tokenvarification.tokenvarify,categoryController.viewcategory);
+router.delete("/deletecategory/:id",tokenvarification.tokenvarify,categoryController.deletecategory);
+router.post("/updatecategory/:id",tokenvarification.tokenvarify,upload.single("categoryimage"),categoryController.updatecategory);
 
 
 
