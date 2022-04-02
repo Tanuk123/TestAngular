@@ -27,7 +27,7 @@ exports.addcategory = (request, response, next) => {
   }
 
   exports.deletecategory=(request,response,next)=>{
-    Category.deleteOne({_id:request.params.id})
+    Category.deleteOne({_id:request.body.id})
       .then(result=>{
         console.log(result);
         if(result.deletedCount)
@@ -43,11 +43,11 @@ exports.addcategory = (request, response, next) => {
   }
 
   exports.updatecategory=(request,response,next)=>{
-   Category.updateOne({_id:request.params.id},
+   Category.updateOne({_id:request.body.id},
       {
         $set:{
           categoryname:request.body.categoryname,
-          categoryimage:"http://localhost:3000/images/"+request.file.filename
+          categoryimage:"https://angularbackendapi.herokuapp.com/images/"+request.file.filename
         }
     })
    .then(result=>{
