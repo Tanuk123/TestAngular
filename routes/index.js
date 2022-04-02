@@ -20,7 +20,7 @@ router.post("/signin" ,userController.signin);
 
 router.post("/addcatgeory",tokenvarification.tokenvarify,upload.single("categoryimage"),categoryController.addcategory); 
 router.get("/viewcategory",tokenvarification.tokenvarify,categoryController.viewcategory);
-router.delete("/deletecategory",tokenvarification.tokenvarify,categoryController.deletecategory);
+router.post("/deletecategory",categoryController.deletecategory);
 router.post("/updatecategory",tokenvarification.tokenvarify,upload.single("categoryimage"),categoryController.updatecategory);
 
 
