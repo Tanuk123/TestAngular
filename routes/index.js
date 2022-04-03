@@ -18,10 +18,10 @@ var upload = multer({ storage: Storage });
 router.post("/signup" ,userController.signup);
 router.post("/signin" ,userController.signin);
 
-router.post("/addcatgeory",tokenvarification.tokenvarify,upload.single("categoryimage"),categoryController.addcategory); 
-router.get("/viewcategory",tokenvarification.tokenvarify,categoryController.viewcategory);
+router.post("/addcatgeory",upload.single("categoryimage"),categoryController.addcategory); 
+router.get("/viewcategory",categoryController.viewcategory);
 router.post("/deletecategory",categoryController.deletecategory);
-router.post("/updatecategory",tokenvarification.tokenvarify,upload.single("categoryimage"),categoryController.updatecategory);
+router.post("/updatecategory",upload.single("categoryimage"),categoryController.updatecategory);
 
 
 
